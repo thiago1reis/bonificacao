@@ -13,4 +13,4 @@ const mix = require('laravel-mix');
 
  mix 
  .sass('resources/views/scss/style.scss','public/site/style.css')
- .scripts('node_modules/bootstrap/dist/js/bootstrap.js','public/site/bootstrap.js')
+ .scripts('node_modules/bootstrap/dist/js/bootstrap.bundle.js','public/site/bootstrap.js')
