@@ -1,7 +1,13 @@
-
-$orange: #ff5c2be0;
 $theme-colors: (
-  "orange": $orange,
-
+  "primary":  #1160d3e3,
+  "secondary": #6c757d,
+  "success": #198754,
+  "info": #2f8895e8,
+  "warning": #ffc107,
+  "danger": #dc3545,
+  "light": #edf0f3de,
+  "dark": #212529,
+  "orange": #ff5c2be0,
+  "blue": #052c65,
 );
 @import "~bootstrap/scss/bootstrap";

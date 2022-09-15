@@ -33,6 +33,461 @@ url("./fonts/icofont.woff") format("woff");
   -webkit-font-smoothing: antialiased;
 }
 
+.icofont-ui-add:before
+{
+  content: "\ec3e";
+}
+
+.icofont-ui-alarm:before
+{
+  content: "\ec3f";
+}
+
+.icofont-ui-battery:before
+{
+  content: "\ec40";
+}
+
+.icofont-ui-block:before
+{
+  content: "\ec41";
+}
+
+.icofont-ui-bluetooth:before
+{
+  content: "\ec42";
+}
+
+.icofont-ui-brightness:before
+{
+  content: "\ec43";
+}
+
+.icofont-ui-browser:before
+{
+  content: "\ec44";
+}
+
+.icofont-ui-calendar:before
+{
+  content: "\ec45";
+}
+
+.icofont-ui-call:before
+{
+  content: "\ec46";
+}
+
+.icofont-ui-camera:before
+{
+  content: "\ec47";
+}
+
+.icofont-ui-cart:before
+{
+  content: "\ec48";
+}
+
+.icofont-ui-cell-phone:before
+{
+  content: "\ec49";
+}
+
+.icofont-ui-chat:before
+{
+  content: "\ec4a";
+}
+
+.icofont-ui-check:before
+{
+  content: "\ec4b";
+}
+
+.icofont-ui-clip-board:before
+{
+  content: "\ec4c";
+}
+
+.icofont-ui-clip:before
+{
+  content: "\ec4d";
+}
+
+.icofont-ui-clock:before
+{
+  content: "\ec4e";
+}
+
+.icofont-ui-close:before
+{
+  content: "\ec4f";
+}
+
+.icofont-ui-contact-list:before
+{
+  content: "\ec50";
+}
+
+.icofont-ui-copy:before
+{
+  content: "\ec51";
+}
+
+.icofont-ui-cut:before
+{
+  content: "\ec52";
+}
+
+.icofont-ui-delete:before
+{
+  content: "\ec53";
+}
+
+.icofont-ui-dial-phone:before
+{
+  content: "\ec54";
+}
+
+.icofont-ui-edit:before
+{
+  content: "\ec55";
+}
+
+.icofont-ui-email:before
+{
+  content: "\ec56";
+}
+
+.icofont-ui-file:before
+{
+  content: "\ec57";
+}
+
+.icofont-ui-fire-wall:before
+{
+  content: "\ec58";
+}
+
+.icofont-ui-flash-light:before
+{
+  content: "\ec59";
+}
+
+.icofont-ui-flight:before
+{
+  content: "\ec5a";
+}
+
+.icofont-ui-folder:before
+{
+  content: "\ec5b";
+}
+
+.icofont-ui-game:before
+{
+  content: "\ec5c";
+}
+
+.icofont-ui-handicapped:before
+{
+  content: "\ec5d";
+}
+
+.icofont-ui-home:before
+{
+  content: "\ec5e";
+}
+
+.icofont-ui-image:before
+{
+  content: "\ec5f";
+}
+
+.icofont-ui-laoding:before
+{
+  content: "\ec60";
+}
+
+.icofont-ui-lock:before
+{
+  content: "\ec61";
+}
+
+.icofont-ui-love-add:before
+{
+  content: "\ec62";
+}
+
+.icofont-ui-love-broken:before
+{
+  content: "\ec63";
+}
+
+.icofont-ui-love-remove:before
+{
+  content: "\ec64";
+}
+
+.icofont-ui-love:before
+{
+  content: "\ec65";
+}
+
+.icofont-ui-map:before
+{
+  content: "\ec66";
+}
+
+.icofont-ui-message:before
+{
+  content: "\ec67";
+}
+
+.icofont-ui-messaging:before
+{
+  content: "\ec68";
+}
+
+.icofont-ui-movie:before
+{
+  content: "\ec69";
+}
+
+.icofont-ui-music-player:before
+{
+  content: "\ec6a";
+}
+
+.icofont-ui-music:before
+{
+  content: "\ec6b";
+}
+
+.icofont-ui-mute:before
+{
+  content: "\ec6c";
+}
+
+.icofont-ui-network:before
+{
+  content: "\ec6d";
+}
+
+.icofont-ui-next:before
+{
+  content: "\ec6e";
+}
+
+.icofont-ui-note:before
+{
+  content: "\ec6f";
+}
+
+.icofont-ui-office:before
+{
+  content: "\ec70";
+}
+
+.icofont-ui-password:before
+{
+  content: "\ec71";
+}
+
+.icofont-ui-pause:before
+{
+  content: "\ec72";
+}
+
+.icofont-ui-play-stop:before
+{
+  content: "\ec73";
+}
+
+.icofont-ui-play:before
+{
+  content: "\ec74";
+}
+
+.icofont-ui-pointer:before
+{
+  content: "\ec75";
+}
+
+.icofont-ui-power:before
+{
+  content: "\ec76";
+}
+
+.icofont-ui-press:before
+{
+  content: "\ec77";
+}
+
+.icofont-ui-previous:before
+{
+  content: "\ec78";
+}
+
+.icofont-ui-rate-add:before
+{
+  content: "\ec79";
+}
+
+.icofont-ui-rate-blank:before
+{
+  content: "\ec7a";
+}
+
+.icofont-ui-rate-remove:before
+{
+  content: "\ec7b";
+}
+
+.icofont-ui-rating:before
+{
+  content: "\ec7c";
+}
+
+.icofont-ui-record:before
+{
+  content: "\ec7d";
+}
+
+.icofont-ui-remove:before
+{
+  content: "\ec7e";
+}
+
+.icofont-ui-reply:before
+{
+  content: "\ec7f";
+}
+
+.icofont-ui-rotation:before
+{
+  content: "\ec80";
+}
+
+.icofont-ui-rss:before
+{
+  content: "\ec81";
+}
+
+.icofont-ui-search:before
+{
+  content: "\ec82";
+}
+
+.icofont-ui-settings:before
+{
+  content: "\ec83";
+}
+
+.icofont-ui-social-link:before
+{
+  content: "\ec84";
+}
+
+.icofont-ui-tag:before
+{
+  content: "\ec85";
+}
+
+.icofont-ui-text-chat:before
+{
+  content: "\ec86";
+}
+
+.icofont-ui-text-loading:before
+{
+  content: "\ec87";
+}
+
+.icofont-ui-theme:before
+{
+  content: "\ec88";
+}
+
+.icofont-ui-timer:before
+{
+  content: "\ec89";
+}
+
+.icofont-ui-touch-phone:before
+{
+  content: "\ec8a";
+}
+
+.icofont-ui-travel:before
+{
+  content: "\ec8b";
+}
+
+.icofont-ui-unlock:before
+{
+  content: "\ec8c";
+}
+
+.icofont-ui-user-group:before
+{
+  content: "\ec8d";
+}
+
+.icofont-ui-user:before
+{
+  content: "\ec8e";
+}
+
+.icofont-ui-v-card:before
+{
+  content: "\ec8f";
+}
+
+.icofont-ui-video-chat:before
+{
+  content: "\ec90";
+}
+
+.icofont-ui-video-message:before
+{
+  content: "\ec91";
+}
+
+.icofont-ui-video-play:before
+{
+  content: "\ec92";
+}
+
+.icofont-ui-video:before
+{
+  content: "\ec93";
+}
+
+.icofont-ui-volume:before
+{
+  content: "\ec94";
+}
+
+.icofont-ui-weather:before
+{
+  content: "\ec95";
+}
+
+.icofont-ui-wifi:before
+{
+  content: "\ec96";
+}
+
+.icofont-ui-zoom-in:before
+{
+  content: "\ec97";
+}
+
+.icofont-ui-zoom-out:before
+{
+  content: "\ec98";
+}
+
 .icofont-addons:before
 {
   content: "\eea0";
