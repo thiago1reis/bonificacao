@@ -25,11 +25,10 @@
             <li class="nav-item dropdown px-3">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="icofont-ui-user"></i> 
-               
+                {{ auth()->user()->full_name }}
               </a>
               <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Configurações</a></li>
-                <li><a class="dropdown-item" href="">Sair</a></li>
+                <li><a class="dropdown-item" href="{{ route('logout') }}">Sair</a></li>
               </ul>
             </li>
           </ul>

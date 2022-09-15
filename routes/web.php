@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\{LoginController, AdminController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
+//Rota inicial
+Route::view('/', 'login')->name('home');
+
+//Rotas de login
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/check-auth', [LoginController::class, 'checkAuth'])->name('check.auth');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+//Rotas do admin
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
 });

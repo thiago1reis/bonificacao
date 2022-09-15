@@ -8,7 +8,8 @@
             <div class="card bg-white text-bg-light mb-3 shadow-lg " >
                 <div class="card-body">
                     <h3 class="card-title text-secondary mb-3 text-center fw-light">Login</h3>
-                    <form action="" method="POST">
+                    @include('layout.alerts')
+                    <form action="{{ route('login')}}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <input type="text" class="form-control text-secondary" id="login" name="login" placeholder="Digite o login" value="{{ old('login') }}">
