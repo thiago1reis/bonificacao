@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{LoginController, AdminController};
+use App\Http\Controllers\{LoginController, AdminController, EmployeeController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +25,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 //Rotas do admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/funcionarios', [EmployeeController::class, 'index'])->name('employee.index');
+    Route::get('/funcionario/registrar', [EmployeeController::class, 'create'])->name('employee.create');
+  
 });

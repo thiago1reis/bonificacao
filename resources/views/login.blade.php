@@ -26,4 +26,5 @@
         </div>    
         <div class="col-sm-6 col-md-12 col-lg-4">{{-- Lado direito --}}</div>    
     </div> 
+</div>    
 @endsection  

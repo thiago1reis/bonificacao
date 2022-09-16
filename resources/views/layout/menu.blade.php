@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <span class="navbar-brand fs-3" ><i class="icofont-money fs-4"></i> Bonificação</span>
+      <a class="nav-link" href="{{ route('admin') }}"><span class="navbar-brand fs-3" ><i class="icofont-money fs-4"></i> Bonificação</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -12,8 +12,8 @@
               Funcionários
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="">Registar Funcionário</a></li>
-              <li><a class="dropdown-item" href="">Todos Funcionários</a></li>
+              <li><a class="dropdown-item" href="{{ route('employee.create')}}">Registar Funcionário</a></li>
+              <li><a class="dropdown-item" href="{{ route('employee.index')}}">Todos Funcionários</a></li>
             </ul>
           </li>
           <li class="nav-item px-3">
