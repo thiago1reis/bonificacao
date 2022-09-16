@@ -17,7 +17,7 @@ class CreateMovementsTable extends Migration
             $table->id();
             $table->enum('movement_type', ['income', 'expense']);
             $table->decimal('value');
-            $table->string('note')->nullable();
+            $table->string('note');
             $table->foreignId('employee_id')->constrained('employee')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('administrator_id')->constrained('administrator')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
