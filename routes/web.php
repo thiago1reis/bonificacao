@@ -27,5 +27,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/funcionarios', [EmployeeController::class, 'index'])->name('employee.index');
     Route::get('/funcionario/registrar', [EmployeeController::class, 'create'])->name('employee.create');
-  
+    Route::post('/funcionario/registrar', [EmployeeController::class, 'store'])->name('employee.store');
 });
