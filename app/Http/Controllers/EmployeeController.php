@@ -28,8 +28,7 @@ class EmployeeController extends Controller
         $employees = $this->employeeService->search($request->query('name'), $request->query('date'));
         return view('admin.employee.index', [
             'employees' => $employees,
-            'name' => $request->query('name'),
-            'date' => $request->query('date'),
+            'search' => $request->query()
         ]);   
     }
 
