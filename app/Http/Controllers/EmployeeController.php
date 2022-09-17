@@ -47,6 +47,6 @@ class EmployeeController extends Controller
           // dd($e);
           return redirect()->back()->withInput($request->all())->with('error','Algo inesperado ocorreu, estamos trabalhando para resolver.');
       }
-      return redirect()->route('employee.create')->with('success', 'Funcionário resgistrado com sucesso.');
+      return redirect()->route('employee.index')->with('success', 'Funcionário resgistrado com sucesso.');
     }
 }

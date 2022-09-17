@@ -9,9 +9,10 @@
         </ol>
     </nav>
     <div class="card bg-white mb-3 shadow-lg " >
-        <div class="card-body text-secondary"> 
+        <div class="card-body text-secondary">
             <a href="{{ route('employee.create')}}" type="button" class="btn btn-outline-primary mb-3"> <i class="icofont-plus-circle"></i> Novo Registro</a>
-              <form method="get" action="{{ route('employee.search') }}" >             
+            @include('layout.alerts')
+            <form method="get" action="{{ route('employee.search') }}" >             
                 <div class="mb-3 g-3 row">
                   <div class="col-sm-6 col-md-5 col-lg-5 col-xl-7">
                       <input type="text" class="form-control" id="name" name="name" placeholder="Buscar por nome" value="{{ isset($name) ? $name = $name : $name = '' }}">
@@ -26,7 +27,7 @@
                     <a href="{{ route('employee.index')}}" type="button" class="btn btn-primary ">Limpar</a>
                   </div>
                 </div>
-              </form> 
+            </form>
             <div class="table-responsive">
               <table class="table table-striped mb-3">
                 <thead>

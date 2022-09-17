@@ -31,8 +31,7 @@ class EmployeeService
     {
       $data['password'] = bcrypt($data['password']);
       $data['administrator_id'] = auth()->user()->id;
-      $employee = $this->employeeRepository->createEmployee($data);
-      return $employee;
+      return $this->employeeRepository->createEmployee($data);
     }
 
     // public function verifyEmployee($login){
