@@ -16,8 +16,15 @@ class EmployeeService
       $this->employeeRepository = $employeeRepository;
     }
 
-    // public function verifyEmployee($login){
-    // }
+    //Metodo para listar funcionários
+    public function getAll(){
+      return $this->employeeRepository->getEmployees();
+    }
+
+    //Metodo para filtrar funcionários
+    public function search($name, $date){
+      return $this->employeeRepository->searchEmployees($name, $date);
+    }
 
     //Metodo para salvar dados do funcionário 
     public function store($data)
@@ -27,4 +34,7 @@ class EmployeeService
       $employee = $this->employeeRepository->createEmployee($data);
       return $employee;
     }
+
+    // public function verifyEmployee($login){
+    // }
 }

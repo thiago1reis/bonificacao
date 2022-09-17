@@ -24,8 +24,15 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Rotas do admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
+    
+    //Rota do painel admin
     Route::get('/', [AdminController::class, 'index'])->name('admin');
+    
+    //Rotas de funcionárois
     Route::get('/funcionarios', [EmployeeController::class, 'index'])->name('employee.index');
+    Route::any('/funcionarios/busca', [EmployeeController::class, 'search'])->name('employee.search');
     Route::get('/funcionario/registrar', [EmployeeController::class, 'create'])->name('employee.create');
     Route::post('/funcionario/registrar', [EmployeeController::class, 'store'])->name('employee.store');
+    
+  
 });

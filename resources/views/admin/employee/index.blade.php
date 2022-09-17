@@ -10,24 +10,23 @@
     </nav>
     <div class="card bg-white mb-3 shadow-lg " >
         <div class="card-body text-secondary"> 
-            <div class="mb-3">
-                <a href="{{ route('employee.create')}}" type="button" class="btn btn-outline-primary "> <i class="icofont-plus-circle"></i> Novo Registro</a>
-            </div>
-            <div class="mb-3 row">
-                <div class="col-lg-7">
-                    <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Buscar por nome">
+            <a href="{{ route('employee.create')}}" type="button" class="btn btn-outline-primary mb-3"> <i class="icofont-plus-circle"></i> Novo Registro</a>
+              <form method="get" action="{{ route('employee.search') }}" >             
+                <div class="mb-3 g-3 row">
+                  <div class="col-sm-6 col-md-5 col-lg-5 col-xl-7">
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Buscar por nome" value="{{ isset($name) ? $name = $name : $name = '' }}">
+                  </div>
+                  <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3">
+                      <input type="date" class="form-control" id="date" name="date" value="{{ isset($date) ? $date = $date : $date = '' }}">
+                  </div>
+                  <div class="col-sm-6 col-md-2 col-lg-2 col-xl-1 d-grid">
+                      <button type="submit" class="btn btn-primary ">Buscar</button>
+                  </div>
+                  <div class="col-sm-6 col-md-2 col-lg-2 col-xl-1 d-grid">
+                    <a href="{{ route('employee.index')}}" type="button" class="btn btn-primary ">Limpar</a>
+                  </div>
                 </div>
-                <div class="col-lg-3">
-                    <input type="date" class="form-control" id="create_at" name="create_at" >
-                </div>
-                <div class="col-lg-2 ">
-                    <button type="submit" class="btn btn-primary ms-2 me-3">Buscar</button>
-                    <a href="#" type="button" class="btn btn-primary ">Limpar</a>
-                </div>  
-            </div>
-            @php
-                $data = false
-            @endphp
+              </form> 
             <div class="table-responsive">
               <table class="table table-striped mb-3">
                 <thead>
@@ -40,40 +39,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                 @if($data)
+                 @if(count($employees) > 0)
+                 @foreach($employees as $employee)
                   <tr class="text-nowrap bd-highlight">
-                    <td class="align-middle">1</td>
-                    <td class="align-middle">Thiago Alexandre Reis</td>
-                    <td class="align-middle">R$ 0,00</td>
-                    <td class="align-middle">16/09/2022 - 01:19:59 </td>
+                    <td class="align-middle">{{ $employee->id }}</td>
+                    <td class="align-middle">{{ $employee->full_name }}</td>
+                    <td class="align-middle">{{"R$ ".number_format($employee->current_balance, 2, ",", "."); }}</td>
+                    <td class="align-middle">{{date('d/m/Y H:i:s', strtotime($employee->created_at))}}</td>
                     <td class="align-middle">
                         <a href="{{ route('employee.index') }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-edit"></i> Editar</a>
                         <a href="{{ route('employee.index') }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-file"></i> Extrato</a>
                         <a href="{{ route('employee.index') }}" type="button" class="btn btn-danger btn-sm"><i class="icofont-ui-delete"></i> Deletar</a>
                     </td>
                   </tr>
-                  <tr class="text-nowrap bd-highlight">
-                    <td class="align-middle">1</td>
-                    <td class="align-middle">Thiago Alexandre Reis</td>
-                    <td class="align-middle">R$ 0,00</td>
-                    <td class="align-middle">16/09/2022 - 01:19:59 </td>
-                    <td class="align-middle">
-                        <a href="{{ route('employee.index') }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-edit"></i> Editar</a>
-                        <a href="{{ route('employee.index') }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-file"></i> Extrato</a>
-                        <a href="{{ route('employee.index') }}" type="button" class="btn btn-danger btn-sm"><i class="icofont-ui-delete"></i> Deletar</a>
-                    </td>
-                  </tr>
-                  <tr class="text-nowrap bd-highlight">
-                    <td class="align-middle">1</td>
-                    <td class="align-middle">Thiago Alexandre Reis</td>
-                    <td class="align-middle">R$ 0,00</td>
-                    <td class="align-middle">16/09/2022 - 01:19:59 </td>
-                    <td class="align-middle">
-                        <a href="{{ route('employee.index') }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-edit"></i> Editar</a>
-                        <a href="{{ route('employee.index') }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-file"></i> Extrato</a>
-                        <a href="{{ route('employee.index') }}" type="button" class="btn btn-danger btn-sm"><i class="icofont-ui-delete"></i> Deletar</a>
-                    </td>
-                  </tr>
+                  @endforeach
                   @else
                   <tr class="text-nowrap bd-highlight">
                     <td class="align-middle text-center" colspan="5"><span>Nenhum registro encontrado.</span></td>
@@ -81,6 +60,11 @@
                   @endif 
                 </tbody>
               </table>
+              @if(isset($search))
+                {{ $employees->appends($search)->links('vendor.pagination.bootstrap-4') }}
+              @else
+                {{ $employees->links('vendor.pagination.bootstrap-4') }}
+              @endif
             </div>  
         </div>
     </div>
