@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EmployeeRequest;
+use App\Http\Requests\EmployeeStoreRequest;
 use App\Http\Requests\EmployeeUpdateRequest;
 use App\Models\Employee;
 use App\Services\EmployeeService;
@@ -39,13 +39,14 @@ class EmployeeController extends Controller
     }
 
     //Registra funcionário.
-    public function store(EmployeeRequest $request){ 
+    public function store(EmployeeStoreRequest $request){ 
+        $request->validated();
         try{
             //Verifica se o login informado está diponível.
             if($this->employeeService->verifyLogin($request->login)){
                 return redirect()->back()->withInput($request->all())->with('attention','Esse login não está disponível.');
             }
-            $this->employeeService->store($request->validated());
+            $this->employeeService->store($request->all());
         }catch (Exception $e){
             // dd($e);
             return redirect()->back()->withInput($request->all())->with('error','Algo inesperado ocorreu, estamos trabalhando para resolver.');
