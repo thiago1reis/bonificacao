@@ -27,12 +27,12 @@ class EmployeeService
     }
 
     //Metodo para verificar se login está disponivle
-    public function verifyLogin($login){
+    public function verifyLogin(string $login){
       return $this->employeeRepository->verifyLoginEmployee($login);
     }
 
     //Metodo para salvar dados do funcionário 
-    public function store($data)
+    public function store(array $data)
     {
       $data['password'] = bcrypt($data['password']);
       $data['administrator_id'] = auth()->user()->id;
@@ -40,7 +40,7 @@ class EmployeeService
     }
 
     //Metodo para buscar um funcionário expecífico
-    public function findById($id){
+    public function findById(int $id){
       return $this->employeeRepository->findEmployee($id);
     } 
 
