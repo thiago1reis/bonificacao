@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EmployeeRequest;
+use App\Http\Requests\EmployeeUpdateRequest;
 use App\Models\Employee;
 use App\Services\EmployeeService;
 use Exception;
@@ -56,5 +57,30 @@ class EmployeeController extends Controller
     public function edit($id){
         $employee = $this->employeeService->findById($id);
         return view('admin.employee.edit', compact('employee'));
+    }
+
+    //Atualiza funcionário.
+    public function update(EmployeeUpdateRequest $request, $id){
+        $request->validated();
+        try{
+            $employee = $this->employeeService->findById($id);
+            //Compara se valor de login recebido é diferente do que está cadastrado.
+            if($request->login != $employee->login){
+                //Verifica se o login informado está diponível.
+                if($this->employeeService->verifyLogin($request->login)){
+                    return redirect()->back()->withInput($request->all())->with('attention','Esse login não está disponível.');
+                }
+            }
+            //Entra aqui caso tenha informado nova senha.
+            if($request->password){
+                $this->employeeService->update($employee->id, $request->all());
+            }
+            //Caso não tenha informado nova senha o campo password é ignorado.
+            $this->employeeService->update($employee->id, $request->except('password'));
+        }catch (Exception $e){
+            dd($e);
+            return redirect()->back()->withInput($request->all())->with('error','Algo inesperado ocorreu, estamos trabalhando para resolver.');
+        }
+        return redirect()->route('employee.index')->with('success', 'Funcionário editado com sucesso.');
     }
 }

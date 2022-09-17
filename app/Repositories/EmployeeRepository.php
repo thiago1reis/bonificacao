@@ -77,4 +77,10 @@ class EmployeeRepository extends BaseEloquentRepository implements EmployeeRepos
           'created_at'
           )->find($id);
     }
+
+    public function updateEmployee(int $id, array $data)
+    {
+        $employee = $this->eloquentEmployee->findOrFail($id)->fill($data);
+        return $employee->save();
+    }
 }

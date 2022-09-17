@@ -12,8 +12,9 @@
     </nav>
     <div class="card bg-white mb-3 shadow-lg " >
         <div class="card-body text-secondary">
-            <form method="post" action="{{ route('employee.store') }}" >
-                @csrf
+            <form method="post" action="{{ route('employee.update', ['id' => $employee->id]) }}" >
+                @csrf 
+                @method('put')
                 @include('layout.alerts')
                 <div class="mb-3">
                     <label for="full_name" class="form-label">Nome Completo</label>
@@ -27,7 +28,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Digite a senha" maxlength="8" value="{{ old('password') }}">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Digite a senha" maxlength="8" value="">
                     @error('password')<span class="text-danger">{{ $message }}</span>@enderror
                 </div>
                 <div class="mb-3 float-end">

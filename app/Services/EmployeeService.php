@@ -43,6 +43,15 @@ class EmployeeService
     public function findById($id){
       return $this->employeeRepository->findEmployee($id);
     } 
+
+    //Metodo para atualizar dados do funcionário 
+    public function update(int $id, array $data)
+    {
+      if(isset($data['password'])){
+          $data['password'] = bcrypt($data['password']);
+      } 
+      return $this->employeeRepository->updateEmployee($id, $data);
+    }
 }
 
     

@@ -13,4 +13,5 @@ interface EmployeeRepositoryInterface extends BaseEloquentInterface
   public function searchEmployees($name, $date);
   public function verifyLoginEmployee($login);
   public function findEmployee($id);
+  public function updateEmployee(int $id, array $data);
 }
