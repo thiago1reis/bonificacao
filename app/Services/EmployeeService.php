@@ -26,6 +26,11 @@ class EmployeeService
       return $this->employeeRepository->searchEmployees($name, $date);
     }
 
+    //Metodo para verificar se login está disponivle
+    public function verifyLogin($login){
+      return $this->employeeRepository->verifyLoginEmployee($login);
+    }
+
     //Metodo para salvar dados do funcionário 
     public function store($data)
     {
@@ -33,7 +38,6 @@ class EmployeeService
       $data['administrator_id'] = auth()->user()->id;
       return $this->employeeRepository->createEmployee($data);
     }
-
-    // public function verifyEmployee($login){
-    // }
 }
+
+    

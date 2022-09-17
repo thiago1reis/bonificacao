@@ -58,6 +58,10 @@ class EmployeeRepository extends BaseEloquentRepository implements EmployeeRepos
         ->paginate(10);
     }
 
+    public function verifyLoginEmployee($login){
+      return $this->eloquentEmployee->select('login')->where('login', $login)->exists();
+    }
+
     public function createEmployee(array $data)
     {
         return $this->eloquentEmployee->create($data);
