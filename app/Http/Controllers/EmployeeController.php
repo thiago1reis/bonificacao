@@ -17,13 +17,13 @@ class EmployeeController extends Controller
       $this->employeeService = $employeeService;
     }
 
-    //Lista de todos os funcionários
+    //Lista de todos os funcionários.
     public function index(){
         $employees = $this->employeeService->getAll();
         return view('admin.employee.index', compact('employees'));
     }
 
-    //Busca funcionários de acordo o filtro
+    //Busca funcionários de acordo o filtro.
     public function search(Request $request){
         $employees = $this->employeeService->search($request->query('name'), $request->query('date'));
         return view('admin.employee.index', [
@@ -32,15 +32,15 @@ class EmployeeController extends Controller
         ]);   
     }
 
-    //Formulario para registrar funcionário
+    //Formulario para registrar funcionário.
     public function create(){
         return view('admin.employee.create');
     }
 
-    //Registra funcionário
+    //Registra funcionário.
     public function store(EmployeeRequest $request){ 
         try{
-            //Verifica se o login informado está diponível
+            //Verifica se o login informado está diponível.
             if($this->employeeService->verifyLogin($request->login)){
                 return redirect()->back()->withInput($request->all())->with('attention','Esse login não está disponível.');
             }
@@ -50,5 +50,11 @@ class EmployeeController extends Controller
             return redirect()->back()->withInput($request->all())->with('error','Algo inesperado ocorreu, estamos trabalhando para resolver.');
         }
         return redirect()->route('employee.index')->with('success', 'Funcionário resgistrado com sucesso.');
+    }
+
+    //Formulario para editar funcionário.
+    public function edit($id){
+        $employee = $this->employeeService->findById($id);
+        return view('admin.employee.edit', compact('employee'));
     }
 }

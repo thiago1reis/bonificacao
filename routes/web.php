@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::any('/funcionarios/busca', [EmployeeController::class, 'search'])->name('employee.search');
     Route::get('/funcionario/registrar', [EmployeeController::class, 'create'])->name('employee.create');
     Route::post('/funcionario/registrar', [EmployeeController::class, 'store'])->name('employee.store');
+    Route::get('/funcionario/editar/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
     
   
 });

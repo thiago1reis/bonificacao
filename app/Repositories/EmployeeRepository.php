@@ -67,4 +67,14 @@ class EmployeeRepository extends BaseEloquentRepository implements EmployeeRepos
         return $this->eloquentEmployee->create($data);
     }
 
+    public function findEmployee($id)
+    {
+        return $this->eloquentEmployee->select(
+          'id',
+          'full_name',
+          'login',
+          'current_balance',
+          'created_at'
+          )->find($id);
+    }
 }

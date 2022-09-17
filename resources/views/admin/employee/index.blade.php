@@ -50,7 +50,7 @@
                     <td class="align-middle">{{"R$ ".number_format($employee->current_balance, 2, ",", "."); }}</td>
                     <td class="align-middle">{{date('d/m/Y H:i:s', strtotime($employee->created_at))}}</td>
                     <td class="align-middle">
-                        <a href="{{ route('employee.index') }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-edit"></i> Editar</a>
+                        <a href="{{ route('employee.edit', ['id' => $employee->id ]) }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-edit"></i> Editar</a>
                         <a href="{{ route('employee.index') }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-file"></i> Extrato</a>
                         <a href="{{ route('employee.index') }}" type="button" class="btn btn-danger btn-sm"><i class="icofont-ui-delete"></i> Deletar</a>
                     </td>

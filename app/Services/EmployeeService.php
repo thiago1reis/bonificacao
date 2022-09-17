@@ -38,6 +38,11 @@ class EmployeeService
       $data['administrator_id'] = auth()->user()->id;
       return $this->employeeRepository->createEmployee($data);
     }
+
+    //Metodo para buscar um funcionário expecífico
+    public function findById($id){
+      return $this->employeeRepository->findEmployee($id);
+    } 
 }
 
     
