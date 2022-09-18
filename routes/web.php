@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{LoginController, AdminController, EmployeeController};
+use App\Http\Controllers\{LoginController, AdminController, EmployeeController, MovementController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +35,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/funcionario/registrar', [EmployeeController::class, 'store'])->name('employee.store');
     Route::get('/funcionario/editar/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
     Route::put('/funcionario/editar/{id}', [EmployeeController::class, 'update'])->name('employee.update');
+    Route::get('/funcionario/extrato/{id}', [EmployeeController::class, 'show'])->name('employee.show');
     Route::delete('/funcionario/deletar/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
+    
+    //Rotas de movimentações
+  
 
 });

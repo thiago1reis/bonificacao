@@ -18,4 +18,8 @@ class Employee extends Model
         'current_balance',
         'administrator_id',
     ];
+
+    public function movements(){
+        return $this->hasMany(Movement::class,'employee_id','id');
+    }
 }

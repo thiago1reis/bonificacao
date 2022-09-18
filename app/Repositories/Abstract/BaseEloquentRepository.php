@@ -6,7 +6,5 @@ use App\Repositories\Interfaces\BaseEloquentInterface;
 
 abstract class BaseEloquentRepository implements BaseEloquentInterface
 {
-  
    //
-  
 }

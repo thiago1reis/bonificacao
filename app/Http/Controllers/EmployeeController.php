@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EmployeeStoreRequest;
 use App\Http\Requests\EmployeeUpdateRequest;
 use App\Models\Employee;
+use App\Models\Movement;
 use App\Services\EmployeeService;
 use Exception;
 use Illuminate\Http\Request;
@@ -92,6 +93,13 @@ class EmployeeController extends Controller
         return redirect()->route('employee.index')->with('success', 'Funcionário editado com sucesso.');
     }
 
+    //Exibe movimentação do funcionário
+    public function show($id)
+    {
+        $employee = $this->employeeService->findById($id);
+        return view('admin.employee.show', compact('employee'));  
+    }
+ 
     //Deleta funcionário.
     public function destroy($id){
         try{

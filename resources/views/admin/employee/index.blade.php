@@ -51,7 +51,7 @@
                     <td class="align-middle">{{date('d/m/Y H:i:s', strtotime($employee->created_at))}}</td>
                     <td class="align-middle">
                         <a href="{{ route('employee.edit', ['id' => $employee->id ]) }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-edit"></i> Editar</a>
-                        <a href="{{ route('employee.index') }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-file"></i> Extrato</a>
+                        <a href="{{ route('employee.show', ['id' => $employee->id ]) }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-file"></i> Extrato</a>
                         <a type="submit" data-bs-toggle="modal" data-id="{{$employee->id}}" data-bs-target="#confirmDelete" class="btn btn-danger btn-sm remover-icon"><i class="icofont-ui-delete"></i> Deletar</a>
                     </td>
                   </tr>
@@ -100,7 +100,6 @@
 @push('js')
     <script>
         const remover_icon = document.querySelectorAll('.remover-icon');
-        console.log(remover_icon)
         remover_icon.forEach(item => {
           item.addEventListener('click', event => {
               const remover = document.getElementById('delete-form');

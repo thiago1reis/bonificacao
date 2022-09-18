@@ -18,4 +18,9 @@ class Movement extends Model
       'employee_id',
       'administrator_id',
     ];
+
+  public function employee()
+  {
+    return $this->hasOne(Employee::class, 'id', 'employee_id');
+  }
 }
