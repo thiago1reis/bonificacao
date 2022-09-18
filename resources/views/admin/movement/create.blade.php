@@ -18,7 +18,7 @@
                 @csrf
                 <div class="mb-3 g-3 row">
                     <div class="col-sm-4 ">
-                        <label for="movement_type" class="form-label">Valor</label>
+                        <label for="movement_type" class="form-label">Tipo</label>
                         <select class="form-select" aria-label="Default select example" name="movement_type">
                                 <option value="">Selecione...</option>
                                 @foreach($types as  $key => $value )
@@ -28,7 +28,7 @@
                         @error('movement_type')<span class="text-danger">{{ $message }}</span>@enderror
                     </div>
                     <div class="col-sm-4 ">
-                        <label for="value" class="form-label">Tipo</label>
+                        <label for="value" class="form-label">Valor</label>
                         <input type="text" class="form-control money2" id="value" name="value" placeholder="R$ 0,00" value="{{ old('value') }}">
                         @error('value')<span class="text-danger">{{ $message }}</span>@enderror
                     </div>
