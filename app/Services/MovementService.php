@@ -42,4 +42,6 @@ class MovementService
     {
          return doubleval(strtr((string) $value, ['.' => '', ',' => '.']));
     }
+
+
 }

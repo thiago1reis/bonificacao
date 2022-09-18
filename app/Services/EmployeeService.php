@@ -61,9 +61,15 @@ class EmployeeService
     }
 
     //Método para buscar saldo do funcionário
-    public function getCurretBalance(int $id)
+    public function getBalance(int $id)
     {
       return $this->employeeRepository->balanceEmployee($id);
+    }
+
+
+    public function updateBalance(int $id, array $data)
+    {
+       return $this->employeeRepository->updateEmployee($id, $data);
     }
 }
 

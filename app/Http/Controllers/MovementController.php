@@ -48,15 +48,32 @@ class MovementController extends Controller
     {  
         $request->validated();
         try{
+
             #Busca saldo atual do funcionário.
-            $employee = $this->employeeService->getCurretBalance($id);
+            $employee = $this->employeeService->getBalance($id);
+
             #Converte valor recebido 
             $value = $this->movementService->treatValue($request->value);
+            
             #Se a movimentação for de saída, verifica se funcionário possui saldo suficiete.
             if($request->movement_type == 'expense' && $employee->current_balance < $value){
                 return redirect()->back()->withInput($request->all())->with('attention','Saldo insuficiente.');
             }
+
+            #Salva os dados da movimentação.
             $this->movementService->store($id, $request->all());
+             
+            #Define um novo valor para o saldo.
+            if($request->movement_type == 'income')
+            {
+                $data['current_balance'] =  $employee->current_balance + $value;
+            }else{
+                $data['current_balance'] =  $employee->current_balance - $value;
+            }
+
+            #Atualiza o valor do saldo
+            $this->employeeService->updateBalance($id, $data);
+
         }catch (Exception $e){
             dd($e);
             return redirect()->back()->withInput($request->all())->with('error','Algo inesperado ocorreu, estamos trabalhando para resolver.');
