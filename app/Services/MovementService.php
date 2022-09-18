@@ -26,5 +26,17 @@ class MovementService
     {
         return $this->movementRepository->getTypes();
     }
-
+    
+    //Método para salvar dados da movimentação 
+    public function store(int $id, array $data)
+    {
+        #Remove as virgulas e coloca pontos. 
+        $data['value'] = doubleval(strtr((string) $data['value'], ['.' => '', ',' => '.']));
+        
+        $data['employee_id'] = $id;
+        $data['administrator_id'] = auth()->user()->id; 
+        $movement = $this->movementRepository->createMovement($data);
+         
+        return $movement;
+    }
 }

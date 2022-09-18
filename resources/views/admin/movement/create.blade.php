@@ -11,10 +11,15 @@
         </ol>
     </nav>
     <div class="card bg-white mb-3 shadow-lg " >
+       
+       
         <div class="card-body text-secondary">
-            <form method="post" action="{{ route('employee.store') }}" >
+            
+            <p class="fs-4 text-end ">Saldo {{"R$ ".number_format($employee->current_balance, 2, ",", "."); }}</p>
+            
+            @include('layout.alerts')
+            <form method="post" action="{{ route('movement.store', ['id' => $employee->id ]) }}" >
                 @csrf
-                @include('layout.alerts')
                 <div class="mb-3 g-3 row">
                     <div class="col-sm-4 ">
                         <label for="movement_type" class="form-label">Valor</label>

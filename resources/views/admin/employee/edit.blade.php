@@ -12,10 +12,10 @@
     </nav>
     <div class="card bg-white mb-3 shadow-lg " >
         <div class="card-body text-secondary">
+            @include('layout.alerts')
             <form method="post" action="{{ route('employee.update', ['id' => $employee->id]) }}" >
                 @csrf 
                 @method('put')
-                @include('layout.alerts')
                 <div class="mb-3">
                     <label for="full_name" class="form-label">Nome Completo</label>
                     <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Digite o nome completo do funcionário" value="{{ old('full_name') ?? $employee->full_name }}">

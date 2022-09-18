@@ -39,4 +39,9 @@ class MovementRepository extends BaseEloquentRepository implements MovementRepos
       return $this->eloquentMovement->typesMovement();
     }
 
+    public function createMovement(array $data)
+    {
+      return $this->eloquentMovement->create($data);
+    }
+
 }

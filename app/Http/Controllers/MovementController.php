@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MovementStoreRequest;
 use App\Services\EmployeeService;
 use App\Services\MovementService;
+use Exception;
+use Illuminate\Http\Request;
 
 class MovementController extends Controller
 {
@@ -39,5 +42,18 @@ class MovementController extends Controller
             'types' => $types,
             'employee' => $employee
         ]);
+    }
+
+    public function store(MovementStoreRequest $request, $id)
+    {  
+       
+        $request->validated();
+        try{
+            $this->movementService->store($id, $request->all());
+        }catch (Exception $e){
+            dd($e);
+            return redirect()->back()->withInput($request->all())->with('error','Algo inesperado ocorreu, estamos trabalhando para resolver.');
+        }
+        return redirect()->route('employee.show', ['id' => $id])->with('success', 'Movimentação resgistrada com sucesso.');
     }
 }
