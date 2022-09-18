@@ -52,7 +52,7 @@
                     <td class="align-middle">
                         <a href="{{ route('employee.edit', ['id' => $employee->id ]) }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-edit"></i> Editar</a>
                         <a href="{{ route('employee.index') }}" type="button" class="btn btn-primary btn-sm me-2"><i class="icofont-ui-file"></i> Extrato</a>
-                        <a href="{{ route('employee.index') }}" type="button" class="btn btn-danger btn-sm"><i class="icofont-ui-delete"></i> Deletar</a>
+                        <a type="submit" data-bs-toggle="modal" data-id="{{$employee->id}}" data-bs-target="#confirmDelete" class="btn btn-danger btn-sm remover-icon"><i class="icofont-ui-delete"></i> Deletar</a>
                     </td>
                   </tr>
                   @endforeach
@@ -71,5 +71,46 @@
             </div>  
         </div>
     </div>
+      {{-- Modal para confirmar a exclusão do registro --}}
+        <div  class="modal fade" id="confirmDelete" tabindex="-1" aria-hidden="true" role="dialog" data-bs-backdrop="static">
+          <div class="modal-dialog modal-md  text-secondary" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title">Deletar Funcionário</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="delete-form" method="post">
+                    @method('delete')
+                    @csrf
+                    <div class="my-2 d-flex align-items-center">
+                          <i class="icofont-warning icofont-3x me-2"></i> <span class="fs-5"> Tem certeza que deseja deletar ?</span>
+                    </div>
+                    <div class=" my-2 float-end ">
+                        <button type="button" data-bs-dismiss="modal" class="btn btn-danger m">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Confirmar</button>
+                    </div>
+                  </form> 
+                </div>
+            </div>
+        </div>
+      </div> 
 </div> 
-@endsection  
+@endsection
+@push('js')
+    <script>
+        const remover_icon = document.querySelectorAll('.remover-icon');
+        console.log(remover_icon)
+        remover_icon.forEach(item => {
+          item.addEventListener('click', event => {
+              const remover = document.getElementById('delete-form');
+              try {
+                id = item.getAttribute('data-id'); 
+                remover.setAttribute('action', `/admin/funcionario/deletar/${id}`)
+              } catch (e) {
+                console.warn(e);
+              }
+          })
+        })
+    </script>
+@endpush  

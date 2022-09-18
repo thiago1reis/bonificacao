@@ -19,13 +19,15 @@ class EmployeeController extends Controller
     }
 
     //Lista de todos os funcionários.
-    public function index(){
+    public function index()
+    {
         $employees = $this->employeeService->getAll();
         return view('admin.employee.index', compact('employees'));
     }
 
     //Busca funcionários de acordo o filtro.
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         $employees = $this->employeeService->search($request->query('name'), $request->query('date'));
         return view('admin.employee.index', [
             'employees' => $employees,
@@ -34,12 +36,14 @@ class EmployeeController extends Controller
     }
 
     //Formulario para registrar funcionário.
-    public function create(){
+    public function create()
+    {
         return view('admin.employee.create');
     }
 
     //Registra funcionário.
-    public function store(EmployeeStoreRequest $request){ 
+    public function store(EmployeeStoreRequest $request)
+    { 
         $request->validated();
         try{
             //Verifica se o login informado está diponível.
@@ -55,13 +59,15 @@ class EmployeeController extends Controller
     }
 
     //Formulario para editar funcionário.
-    public function edit($id){
+    public function edit($id)
+    {
         $employee = $this->employeeService->findById($id);
         return view('admin.employee.edit', compact('employee'));
     }
 
     //Atualiza funcionário.
-    public function update(EmployeeUpdateRequest $request, $id){
+    public function update(EmployeeUpdateRequest $request, $id)
+    {
         $request->validated();
         try{
             $employee = $this->employeeService->findById($id);
@@ -79,9 +85,21 @@ class EmployeeController extends Controller
             //Caso não tenha informado nova senha o campo password é ignorado.
             $this->employeeService->update($employee->id, $request->except('password'));
         }catch (Exception $e){
-            dd($e);
+            // dd($e);
             return redirect()->back()->withInput($request->all())->with('error','Algo inesperado ocorreu, estamos trabalhando para resolver.');
+        
         }
         return redirect()->route('employee.index')->with('success', 'Funcionário editado com sucesso.');
+    }
+
+    //Deleta funcionário.
+    public function destroy($id){
+        try{
+            $this->employeeService->destroy($id);
+        }catch (Exception){
+            // dd($e);
+            return redirect()->back()->with('error','Algo inesperado ocorreu, estamos trabalhando para resolver.');
+        }
+        return redirect()->route('employee.index')->with('success', 'Funcionário deletado com sucesso.');
     }
 }

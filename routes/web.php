@@ -35,6 +35,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/funcionario/registrar', [EmployeeController::class, 'store'])->name('employee.store');
     Route::get('/funcionario/editar/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
     Route::put('/funcionario/editar/{id}', [EmployeeController::class, 'update'])->name('employee.update');
-    
-  
+    Route::delete('/funcionario/deletar/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
+
 });

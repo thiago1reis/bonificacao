@@ -83,4 +83,9 @@ class EmployeeRepository extends BaseEloquentRepository implements EmployeeRepos
         $employee = $this->eloquentEmployee->findOrFail($id)->fill($data);
         return $employee->save();
     }
+
+    public function deleteEmployee(int $id)
+    {
+      return $this->eloquentEmployee->find($id)->deleteOrfail($id);
+    }
 }

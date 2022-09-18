@@ -16,22 +16,25 @@ class EmployeeService
       $this->employeeRepository = $employeeRepository;
     }
 
-    //Metodo para listar funcionários
-    public function getAll(){
+    //Método para listar funcionários
+    public function getAll()
+    {
       return $this->employeeRepository->getEmployees();
     }
 
-    //Metodo para filtrar funcionários
-    public function search($name, $date){
+    //Método para filtrar funcionários
+    public function search($name, $date)
+    {
       return $this->employeeRepository->searchEmployees($name, $date);
     }
 
-    //Metodo para verificar se login está disponivle
-    public function verifyLogin(string $login){
+    //Método para verificar se login está disponivle
+    public function verifyLogin(string $login)
+    {
       return $this->employeeRepository->verifyLoginEmployee($login);
     }
 
-    //Metodo para salvar dados do funcionário 
+    //Método para salvar dados do funcionário 
     public function store(array $data)
     {
       $data['password'] = bcrypt($data['password']);
@@ -39,18 +42,25 @@ class EmployeeService
       return $this->employeeRepository->createEmployee($data);
     }
 
-    //Metodo para buscar um funcionário expecífico
-    public function findById(int $id){
+    //Método para buscar um funcionário expecífico
+    public function findById(int $id)
+    {
       return $this->employeeRepository->findEmployee($id);
     } 
 
-    //Metodo para atualizar dados do funcionário 
+    //Método para atualizar dados do funcionário 
     public function update(int $id, array $data)
     {
       if(isset($data['password'])){
           $data['password'] = bcrypt($data['password']);
       } 
       return $this->employeeRepository->updateEmployee($id, $data);
+    }
+
+    //Método para excluir funcionário.
+    public function destroy(int $id)
+    {
+      return $this->employeeRepository->deleteEmployee($id);
     }
 }
 
