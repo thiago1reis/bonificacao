@@ -39,6 +39,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::delete('/funcionario/deletar/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
     
     //Rotas de movimentações
-  
+    Route::get('/movimentacoes', [MovementController::class, 'index'])->name('movement.index');
 
 });

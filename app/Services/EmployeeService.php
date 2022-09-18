@@ -2,10 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Employee;
 use App\Repositories\Interfaces\EmployeeRepositoryInterface;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Collection;
 
 class EmployeeService
 {

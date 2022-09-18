@@ -29,7 +29,7 @@
             </a>
         </div> 
         <div class="col-sm-6 col-md-12 col-lg-3">
-            <a href="#" class="nav-link admin-option">
+            <a href="{{ route('movement.index') }}" class="nav-link admin-option">
                 <div class="card bg-white text-bg-light mb-3 py-5 shadow-lg " >
                     <div class="card-body text-center text-secondary">
                         <i class="icofont-ui-rotation icofont-3x"></i>

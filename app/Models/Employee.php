@@ -19,7 +19,8 @@ class Employee extends Model
         'administrator_id',
     ];
 
-    public function movements(){
+    public function movements()
+    {
         return $this->hasMany(Movement::class,'employee_id','id');
     }
 }

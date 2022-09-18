@@ -9,7 +9,7 @@
           <li class="nav-item dropdown px-3">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="icofont-ui-user-group"></i> 
-              Funcionários
+                Funcionários
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="{{ route('employee.create')}}">Registar Funcionário</a></li>
@@ -17,7 +17,7 @@
             </ul>
           </li>
           <li class="nav-item px-3">
-            <a class="nav-link" href="#"><i class="icofont-ui-rotation"></i> Movimentações</a>
+            <a class="nav-link" href="{{ route('movement.index') }}"><i class="icofont-ui-rotation"></i> Movimentações</a>
           </li>
         </ul>
         <div class="d-flex">

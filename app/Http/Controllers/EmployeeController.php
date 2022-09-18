@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EmployeeStoreRequest;
 use App\Http\Requests\EmployeeUpdateRequest;
-use App\Models\Employee;
-use App\Models\Movement;
 use App\Services\EmployeeService;
 use Exception;
 use Illuminate\Http\Request;
