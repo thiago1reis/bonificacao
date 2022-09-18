@@ -59,6 +59,12 @@ class EmployeeService
     {
       return $this->employeeRepository->deleteEmployee($id);
     }
+
+    //Método para buscar saldo do funcionário
+    public function getCurretBalance(int $id)
+    {
+      return $this->employeeRepository->balanceEmployee($id);
+    }
 }
 
     

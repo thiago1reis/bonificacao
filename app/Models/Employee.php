@@ -21,6 +21,6 @@ class Employee extends Model
 
     public function movements()
     {
-        return $this->hasMany(Movement::class,'employee_id','id');
+        return $this->hasMany(Movement::class,'employee_id','id')->orderBy('id', 'desc');
     }
 }

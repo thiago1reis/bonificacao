@@ -88,4 +88,11 @@ class EmployeeRepository extends BaseEloquentRepository implements EmployeeRepos
     {
       return $this->eloquentEmployee->find($id)->deleteOrfail($id);
     }
+
+    public function balanceEmployee(int $id)
+    {
+      return $this->eloquentEmployee->select(
+        'current_balance',
+        )->find($id);
+    }
 }

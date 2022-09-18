@@ -46,9 +46,16 @@ class MovementController extends Controller
 
     public function store(MovementStoreRequest $request, $id)
     {  
-       
         $request->validated();
         try{
+            #Busca saldo atual do funcionário.
+            $employee = $this->employeeService->getCurretBalance($id);
+            #Converte valor recebido 
+            $value = $this->movementService->treatValue($request->value);
+            #Se a movimentação for de saída, verifica se funcionário possui saldo suficiete.
+            if($request->movement_type == 'expense' && $employee->current_balance < $value){
+                return redirect()->back()->withInput($request->all())->with('attention','Saldo insuficiente.');
+            }
             $this->movementService->store($id, $request->all());
         }catch (Exception $e){
             dd($e);
