@@ -16,7 +16,7 @@
                 <div class="mb-3 g-3 row">
                   <div class="col-sm-6 col-md-5 col-lg-5 col-xl-7">
                       <input type="text" class="form-control" id="name" name="name" placeholder="Buscar por nome" 
-                        value="{{ isset($search['name']) ? $search['name'] = $search['name'] : $search['names'] = '' }}">
+                        value="{{ isset($search['name']) ? $search['name'] = $search['name'] : $search['name'] = '' }}">
                   </div>
                   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3">
                       <input type="date" class="form-control" id="date" name="date" 

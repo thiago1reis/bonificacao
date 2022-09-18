@@ -50,7 +50,7 @@
                   @endforeach
                   @else
                   <tr class="text-nowrap bd-highlight">
-                    <td class="align-middle text-center" colspan="5"><span>Ainda não existe movimentação para esse funcionário.</span></td>
+                    <td class="align-middle text-center" colspan="5"><span>Ainda não existe movimentações para esse funcionário.</span></td>
                   </tr>
                   @endif 
                 </tbody>

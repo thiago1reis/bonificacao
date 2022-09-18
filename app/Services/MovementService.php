@@ -21,6 +21,12 @@ class MovementService
       return $this->movementRepository->getMovements();
     }
 
+    //Método para filtrar movimentações
+    public function search($name, $date, $type)
+    {
+      return $this->movementRepository->searchMovements($name, $date, $type);
+    }
+
     //Método para buscar tipos de movimentação
     public function getTypes()
     {

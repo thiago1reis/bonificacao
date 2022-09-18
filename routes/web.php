@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     
     //Rotas de movimentações
     Route::get('/movimentacoes', [MovementController::class, 'index'])->name('movement.index');
+    Route::any('/movimentacoes/busca', [MovementController::class, 'search'])->name('movement.search');
     Route::get('/movimentacao/registrar/{id}', [MovementController::class, 'create'])->name('movement.create');
     Route::post('/movimentacao/registrar/{id}', [MovementController::class, 'store'])->name('movement.store');
-
 });

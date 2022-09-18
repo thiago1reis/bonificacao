@@ -11,12 +11,8 @@
         </ol>
     </nav>
     <div class="card bg-white mb-3 shadow-lg " >
-       
-       
         <div class="card-body text-secondary">
-            
             <p class="fs-4 text-end ">Saldo {{"R$ ".number_format($employee->current_balance, 2, ",", "."); }}</p>
-            
             @include('layout.alerts')
             <form method="post" action="{{ route('movement.store', ['id' => $employee->id ]) }}" >
                 @csrf
@@ -24,10 +20,10 @@
                     <div class="col-sm-4 ">
                         <label for="movement_type" class="form-label">Valor</label>
                         <select class="form-select" aria-label="Default select example" name="movement_type">
-                            <option selected disabled>Selecione...</option>
-                            @foreach($types as  $key => $value )
-                                <option value="{{ $key }}">{{ $value == 'Income' ? 'Entrada' : 'Saída' }}</option>
-                            @endforeach
+                                <option value="">Selecione...</option>
+                                @foreach($types as  $key => $value )
+                                    <option value="{{ $key }}" >{{ $value == 'Income' ? 'Entrada' : 'Saída' }}</option>
+                                @endforeach 
                         </select>
                         @error('movement_type')<span class="text-danger">{{ $message }}</span>@enderror
                     </div>

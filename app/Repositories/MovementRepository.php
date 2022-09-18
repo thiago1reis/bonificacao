@@ -19,19 +19,64 @@ class MovementRepository extends BaseEloquentRepository implements MovementRepos
 
     public function getMovements()
     {
-        return $this->eloquentMovement->select(
-          'id',
-          'movement_type',
-          'value',
-          'employee_id',
-          'note',
-          'created_at'
-          )
+        return $this->eloquentMovement->join(
+          'employee', 
+          'employee.id', 
+          '=', 
+          'movement.employee_id')
+        ->select(
+          'movement.id',
+          'movement.movement_type',
+          'movement.value',
+          'movement.employee_id',
+          'movement.note',
+          'movement.created_at', 
+          'employee.full_name',
+          'employee.current_balance'
+        )
           ->orderBy(
-            'id',
+            'movement.id',
             'DESC'
           )
           ->paginate(10);
+    }
+
+    public function searchMovements($name, $date, $type)
+    {
+      return $this->eloquentMovement->join(
+        'employee', 
+        'employee.id', 
+        '=', 
+        'movement.employee_id')
+        ->select(
+          'movement.id',
+          'movement.movement_type',
+          'movement.value',
+          'movement.employee_id',
+          'movement.note',
+          'movement.created_at', 
+          'employee.full_name',
+          'employee.current_balance'
+        )
+        ->where(
+          'employee.full_name', 
+          'LIKE', 
+          "{$name}%"
+        )
+        ->where(
+          'movement.created_at', 
+          'LIKE', 
+          "{$date}%"
+        )
+        ->where(
+          'movement.movement_type', 
+          'LIKE', 
+          "{$type}%"
+        )
+        ->orderBy(
+          'movement.id',
+          'DESC')
+        ->paginate(10);
     }
 
     public function getTypes()

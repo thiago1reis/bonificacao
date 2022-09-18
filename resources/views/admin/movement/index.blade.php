@@ -10,22 +10,22 @@
     </nav>
     <div class="card bg-white mb-3 shadow-lg " >
         <div class="card-body text-secondary">
-            <form method="get" action="{{ route('employee.search') }}" >             
+            <form method="get" action="{{ route('movement.search') }}" >             
                 <div class="mb-3 g-3 row">
                   <div class="col-sm-6 col-md-4 col-lg-5 col-xl-5">
-                      <input type="text" class="form-control" id="name" name="name" placeholder="Buscar por nome" 
-                        value="{{ isset($search['name']) ? $search['name'] = $search['name'] : $search['names'] = '' }}">
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Buscar por nome do funcionário" 
+                        value="{{ isset($search['name']) ? $search['name'] = $search['name'] : $search['name'] = '' }}">
                   </div>
                   <div class="col-sm-6 col-md-2 col-lg-3 col-xl-3">
                       <input type="date" class="form-control" id="date" name="date" 
                         value="{{ isset($search['date']) ? $search['date'] = $search['date'] : $search['date'] = '' }}">
                   </div>
                   <div class="col-sm-6 col-md-2 col-lg-2 col-xl-2">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected disabled>Tipo...</option>
+                    <select class="form-select" aria-label="Default select example" id="type" name="type"  >
+                        <option value="">Tipo...</option>
                         @foreach($types as  $key => $value )
-                            <option value="{{ $key }}">{{ $value == 'Income' ? 'Entrada' : 'Saída' }}</option>
-                        @endforeach
+                            <option value="{{ $key }}" {{ isset($search['type']) && $search['type'] == $key ? 'selected': '' }}>{{ $value == 'Income' ? 'Entrada' : 'Saída' }}</option>
+                        @endforeach 
                     </select>
                   </div>
                   <div class="col-sm-6 col-md-2 col-lg-1 col-xl-1 d-grid">
@@ -67,14 +67,14 @@
                           <span class="text-danger"> - {{"R$ ".number_format($movement->value, 2, ",", "."); }}</span>
                         @endif
                       </td>
-                    <td class="align-middle">{{ $movement->employee->full_name }}</td>
+                    <td class="align-middle">{{ $movement->full_name }}</td>
                     <td class="align-middle">{{ $movement->note }}</td>
                     <td class="align-middle">{{date('d/m/Y H:i:s', strtotime($movement->created_at))}}</td>
                   </tr>
                   @endforeach
                   @else
                   <tr class="text-nowrap bd-highlight">
-                    <td class="align-middle text-center" colspan="5"><span>Nenhum registro encontrado.</span></td>
+                    <td class="align-middle text-center" colspan="6"><span>Nenhum registro encontrado.</span></td>
                   </tr>
                   @endif 
                 </tbody>

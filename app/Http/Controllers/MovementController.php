@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MovementStoreRequest;
+use App\Models\Employee;
 use App\Services\EmployeeService;
 use App\Services\MovementService;
 use Exception;
@@ -33,6 +34,18 @@ class MovementController extends Controller
         ]); 
     }
 
+    //Busca movimentação de acordo o filtro.
+    public function search(Request $request)
+    {
+        $movements = $this->movementService->search($request->query('name'), $request->query('date'), $request->query('type'));
+        $types = $this->movementService->getTypes();
+        return view('admin.movement.index', [
+            'movements' => $movements,
+            'types' => $types,
+            'search' => $request->query()
+        ]);   
+    }
+
     //Formulario para registrar movimentação.
     public function create($id)
     {
@@ -44,6 +57,7 @@ class MovementController extends Controller
         ]);
     }
 
+    //Registra movimentação.
     public function store(MovementStoreRequest $request, $id)
     {  
         $request->validated();
