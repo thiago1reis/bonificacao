@@ -19,8 +19,17 @@ class Movement extends Model
       'administrator_id',
     ];
 
-  public function employee()
-  {
-    return $this->hasOne(Employee::class, 'id', 'employee_id');
-  }
+    
+    public static function typesMovement()
+    {
+      return collect([
+        'income' => 'Income',
+        'expense' => 'Expense',
+      ]);
+    }
+
+    public function employee()
+    {
+      return $this->hasOne(Employee::class, 'id', 'employee_id');
+    }
 }

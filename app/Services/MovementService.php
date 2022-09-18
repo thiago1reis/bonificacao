@@ -10,18 +10,21 @@ class MovementService
     protected $movementRepository;
     protected $employeeRepository;
 
-    public function __construct(
-        MovementRepositoryInterface $movementRepository, 
-        
-    ){
+    public function __construct(MovementRepositoryInterface $movementRepository)
+    {
         $this->movementRepository = $movementRepository;
-      
     }
 
     //Método para listar movimentações
     public function getAll()
     {
       return $this->movementRepository->getMovements();
+    }
+
+    //Método para buscar tipos de movimentação
+    public function getTypes()
+    {
+        return $this->movementRepository->getTypes();
     }
 
 }

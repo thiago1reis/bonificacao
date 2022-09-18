@@ -20,16 +20,14 @@
                       <input type="date" class="form-control" id="date" name="date" 
                         value="{{ isset($search['date']) ? $search['date'] = $search['date'] : $search['date'] = '' }}">
                   </div>
-                  
                   <div class="col-sm-6 col-md-2 col-lg-2 col-xl-2">
                     <select class="form-select" aria-label="Default select example">
                         <option selected disabled>Tipo...</option>
-                        <option value="1">One</option>
-                        <option value="1">One</option>
+                        @foreach($types as  $key => $value )
+                            <option value="{{ $key }}">{{ $value == 'Income' ? 'Entrada' : 'Saída' }}</option>
+                        @endforeach
                     </select>
-                  
                   </div>
-
                   <div class="col-sm-6 col-md-2 col-lg-1 col-xl-1 d-grid">
                       <button type="submit" class="btn btn-primary ">Buscar</button>
                   </div>

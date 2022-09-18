@@ -13,7 +13,7 @@
     <div class="card bg-white mb-3 shadow-lg " >
         <div class="card-body text-secondary">
             <a href="{{ route('employee.index')}}" type="button" class="btn btn-primary mb-3">Voltar</a>
-            <a href="{{ route('employee.create')}}" type="button" class="btn btn-outline-primary mb-3"><i class="icofont-plus-circle"></i> Novo Registro</a>
+            <a href="{{ route('movement.create', ['id' => $employee->id ]) }}" type="button" class="btn btn-outline-primary mb-3"><i class="icofont-plus-circle"></i> Novo Registro</a>
             <span class="fs-4 float-end">Saldo {{"R$ ".number_format($employee->current_balance, 2, ",", "."); }}</span>
             <div class="table-responsive">
               <table class="table table-striped mb-3">

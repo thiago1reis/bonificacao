@@ -9,5 +9,6 @@ interface MovementRepositoryInterface extends BaseEloquentInterface
 {
     public function __construct(Movement $movement);
     public function getMovements();
+    public function getTypes();
   
 }

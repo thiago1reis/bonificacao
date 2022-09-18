@@ -34,4 +34,9 @@ class MovementRepository extends BaseEloquentRepository implements MovementRepos
           ->paginate(10);
     }
 
+    public function getTypes()
+    {
+      return $this->eloquentMovement->typesMovement();
+    }
+
 }
