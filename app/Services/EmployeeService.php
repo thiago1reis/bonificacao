@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Repositories\Interfaces\EmployeeRepositoryInterface;
-
 class EmployeeService
 {
     protected $employeeRepository;
@@ -66,7 +65,7 @@ class EmployeeService
       return $this->employeeRepository->balanceEmployee($id);
     }
 
-
+    //Método para atualizar saldo autual do funcionário
     public function updateBalance(int $id, array $data)
     {
        return $this->employeeRepository->updateEmployee($id, $data);

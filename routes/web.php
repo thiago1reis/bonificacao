@@ -25,10 +25,10 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 //Rotas do admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     
-    //Rota do painel admin
+    #Rota do painel admin
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     
-    //Rotas de funcionárois
+    #Rotas de funcionárois
     Route::get('/funcionarios', [EmployeeController::class, 'index'])->name('employee.index');
     Route::any('/funcionarios/busca', [EmployeeController::class, 'search'])->name('employee.search');
     Route::get('/funcionario/registrar', [EmployeeController::class, 'create'])->name('employee.create');
@@ -38,7 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/funcionario/extrato/{id}', [EmployeeController::class, 'show'])->name('employee.show');
     Route::delete('/funcionario/deletar/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
     
-    //Rotas de movimentações
+    #Rotas de movimentações
     Route::get('/movimentacoes', [MovementController::class, 'index'])->name('movement.index');
     Route::any('/movimentacoes/busca', [MovementController::class, 'search'])->name('movement.search');
     Route::get('/movimentacao/registrar/{id}', [MovementController::class, 'create'])->name('movement.create');

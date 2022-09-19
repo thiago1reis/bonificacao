@@ -2,12 +2,9 @@
 
 namespace App\Repositories;
 
-
 use App\Models\Employee;
 use App\Repositories\Abstract\BaseEloquentRepository;
 use App\Repositories\Interfaces\EmployeeRepositoryInterface;
-
-
 class EmployeeRepository extends BaseEloquentRepository implements EmployeeRepositoryInterface
 {
     protected $model = Employee::class;
@@ -58,7 +55,8 @@ class EmployeeRepository extends BaseEloquentRepository implements EmployeeRepos
         ->paginate(10);
     }
 
-    public function verifyLoginEmployee(string $login){
+    public function verifyLoginEmployee(string $login)
+    {
       return $this->eloquentEmployee->select('login')->where('login', $login)->exists();
     }
 

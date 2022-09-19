@@ -24,7 +24,10 @@
                     <select class="form-select" aria-label="Default select example" id="type" name="type"  >
                         <option value="">Tipo...</option>
                         @foreach($types as  $key => $value )
-                            <option value="{{ $key }}" {{ isset($search['type']) && $search['type'] == $key ? 'selected': '' }}>{{ $value == 'Income' ? 'Entrada' : 'Saída' }}</option>
+                          <option value="{{ $key }}" 
+                            {{ isset($search['type']) && $search['type'] == $key ? 'selected': '' }}>
+                            {{ $value == 'Income' ? 'Entrada' : 'Saída' }}
+                          </option>
                         @endforeach 
                     </select>
                   </div>

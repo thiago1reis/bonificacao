@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MovementStoreRequest;
-use App\Models\Employee;
 use App\Services\EmployeeService;
 use App\Services\MovementService;
 use Exception;
@@ -89,7 +88,7 @@ class MovementController extends Controller
             $this->employeeService->updateBalance($id, $data);
 
         }catch (Exception $e){
-            dd($e);
+            // dd($e);
             return redirect()->back()->withInput($request->all())->with('error','Algo inesperado ocorreu, estamos trabalhando para resolver.');
         }
         return redirect()->route('employee.show', ['id' => $id])->with('success', 'Movimentação resgistrada com sucesso.');

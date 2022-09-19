@@ -3,8 +3,6 @@
 namespace App\Repositories\Interfaces;
 
 use App\Models\Movement;
-
-
 interface MovementRepositoryInterface extends BaseEloquentInterface
 {
     public function __construct(Movement $movement);
@@ -12,5 +10,4 @@ interface MovementRepositoryInterface extends BaseEloquentInterface
     public function searchMovements($name, $date, $type);
     public function getTypes();
     public function createMovement(array $data);
-  
 }

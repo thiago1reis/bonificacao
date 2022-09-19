@@ -23,7 +23,8 @@ class MovementRepository extends BaseEloquentRepository implements MovementRepos
           'employee', 
           'employee.id', 
           '=', 
-          'movement.employee_id')
+          'movement.employee_id'
+        )
         ->select(
           'movement.id',
           'movement.movement_type',
@@ -34,11 +35,11 @@ class MovementRepository extends BaseEloquentRepository implements MovementRepos
           'employee.full_name',
           'employee.current_balance'
         )
-          ->orderBy(
+        ->orderBy(
             'movement.id',
             'DESC'
-          )
-          ->paginate(10);
+        )
+        ->paginate(10);
     }
 
     public function searchMovements($name, $date, $type)

@@ -45,7 +45,7 @@ class EmployeeController extends Controller
     { 
         $request->validated();
         try{
-            //Verifica se o login informado está diponível.
+            #Verifica se o login informado está diponível.
             if($this->employeeService->verifyLogin($request->login)){
                 return redirect()->back()->withInput($request->all())->with('attention','Esse login não está disponível.');
             }
@@ -69,24 +69,28 @@ class EmployeeController extends Controller
     {
         $request->validated();
         try{
+
             $employee = $this->employeeService->findById($id);
-            //Compara se valor de login recebido é diferente do que está cadastrado.
+            
+            #Compara se valor de login recebido é diferente do que está cadastrado.
             if($request->login != $employee->login){
-                //Verifica se o login informado está diponível.
+                #Verifica se o login informado está diponível.
                 if($this->employeeService->verifyLogin($request->login)){
                     return redirect()->back()->withInput($request->all())->with('attention','Esse login não está disponível.');
                 }
             }
-            //Entra aqui caso tenha informado nova senha.
+
+            #Entra aqui caso tenha informado nova senha.
             if($request->password){
                 $this->employeeService->update($employee->id, $request->all());
             }
-            //Caso não tenha informado nova senha o campo password é ignorado.
+
+            #Caso não tenha informado nova senha o campo password é ignorado.
             $this->employeeService->update($employee->id, $request->except('password'));
+
         }catch (Exception $e){
-            // dd($e);
+            //dd($e);
             return redirect()->back()->withInput($request->all())->with('error','Algo inesperado ocorreu, estamos trabalhando para resolver.');
-        
         }
         return redirect()->route('employee.index')->with('success', 'Funcionário editado com sucesso.');
     }
@@ -99,7 +103,8 @@ class EmployeeController extends Controller
     }
  
     //Deleta funcionário.
-    public function destroy($id){
+    public function destroy($id)
+    {
         try{
             $this->employeeService->destroy($id);
         }catch (Exception){

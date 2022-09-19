@@ -2,9 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\Interfaces\EmployeeRepositoryInterface;
 use App\Repositories\Interfaces\MovementRepositoryInterface;
-
 class MovementService
 {
     protected $movementRepository;
@@ -48,6 +46,4 @@ class MovementService
     {
          return doubleval(strtr((string) $value, ['.' => '', ',' => '.']));
     }
-
-
 }

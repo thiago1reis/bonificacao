@@ -20,9 +20,12 @@
                     <div class="col-sm-4 ">
                         <label for="movement_type" class="form-label">Tipo</label>
                         <select class="form-select" aria-label="Default select example" name="movement_type">
-                                <option value="">Selecione...</option>
+                                <option disabled selected >Selecione...</option>
                                 @foreach($types as  $key => $value )
-                                    <option value="{{ $key }}" >{{ $value == 'Income' ? 'Entrada' : 'Saída' }}</option>
+                                    <option value="{{ $key }}" 
+                                        {{ old('movement_type') == $key ? 'selected' : '' }}>
+                                        {{ $value == 'Income' ? 'Entrada' : 'Saída' }}
+                                    </option>
                                 @endforeach 
                         </select>
                         @error('movement_type')<span class="text-danger">{{ $message }}</span>@enderror
