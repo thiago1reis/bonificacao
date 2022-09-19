@@ -26,7 +26,7 @@ git clone https://github.com/thiago1reis/bonificacao.git
 ```
 cd bonificacao
 ```
-#### Rode esses comandos para instalar as dependências 
+#### Rode esses comandos para instalar as dependências (A execução completa desses comandos podem demorar um pouco)
 ```
 composer install
 ```
@@ -41,7 +41,7 @@ cp .env.example .env
 ```
 php artisan key:generate
 ```
-#### Em seguida configure seu arquivo .env e depois rode esse comando para executar as migrates
+#### Em seguida rode esse comando para executar as migrates (Dependendo do seu SGBD você terá que criar o banco manualmente e depois executar esse comando, nome do bd = "bonificacao")
 ```
 php artisan migrate --seed
 ```
