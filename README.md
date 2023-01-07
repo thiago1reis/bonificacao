@@ -18,7 +18,7 @@ Sistema para gerenciar bonificações de pontos para funcionários.
 - **[Composer v2.4.1](https://getcomposer.org/)**
 - **[Git](https://git-scm.com/)**
 ### Configurando o projeto
-#### Rode esse comando para clonar o projeto
+#### Clone o projeto
 ```
 git clone https://github.com/thiago1reis/bonificacao.git
 ```
@@ -26,14 +26,11 @@ git clone https://github.com/thiago1reis/bonificacao.git
 ```
 cd bonificacao
 ```
-#### Rode esses comandos para instalar as dependências (A execução completa desses comandos podem demorar um pouco)
+#### Comando para instalar as dependências
 ```
 composer install
 ```
-```
-composer update
-```
-#### Rode esse comando para copiar o arquivo .env.example
+#### Crie o arquivo *.env* com o comando a baixo
 ```
 cp .env.example .env
 ```
@@ -41,7 +38,7 @@ cp .env.example .env
 ```
 php artisan key:generate
 ```
-#### Em seguida rode esse comando para executar as migrates (Dependendo do seu SGBD você terá que criar o banco manualmente e depois executar esse comando, nome do bd = "bonificacao")
+#### Em seguida use esse comando para executar as migrates e criar as tabelas do banco
 ```
 php artisan migrate --seed
 ```
